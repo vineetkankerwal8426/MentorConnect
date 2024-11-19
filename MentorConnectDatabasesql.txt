@@ -1,0 +1,8 @@
+ create table users
+    -> (userId int primary key auto_increment,
+    -> FirstName varchar(20) not null,
+    -> MiddleName varchar(20),
+    -> LastName varchar(20),
+    -> email varchar(50) not null unique,
+    -> phone varchar(12) not null unique,
+    -> password char(64) not null);
