@@ -5,7 +5,8 @@ app.secret_key = "secret-key-Mentor-Connect"
 
 import registration.registrationController
 import login.loginController
-
+import follow.followController
+import userProfile.userProfileController
 
 @app.route('/')
 def mentorconnect():

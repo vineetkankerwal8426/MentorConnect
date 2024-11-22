@@ -5,4 +5,44 @@
     -> LastName varchar(20),
     -> email varchar(50) not null unique,
     -> phone varchar(12) not null unique,
+    -> userIdName varchar(20) not null unique,
     -> password char(64) not null);
+
+
+    create table follower
+    -> (userId int not null,
+    -> followerId int not null,
+    -> primary key (userId,followerId),
+    -> foreign key (userId) references users(userId),
+    -> foreign key (followerId) references users(userId));
+
+
+   create table userInformation
+      (userId int not null primary key,
+      userBio varchar(100),
+      foreign key(userId) references users(userid));
+
+
+    create table sessions
+    -> (sessionId int primary key auto_increment,
+    -> sessionTopic varchar(20) not null,
+    -> sessionDate date not null,
+    -> sessionTime time not null,
+    -> sessionLink varchar(40),
+    -> userId int not null,
+    -> mentorId int not null,
+    -> sessionMessage varchar(100),
+    -> foreign key(userId) references users(userId),
+    -> foreign key(mentorId) references users(userId));
+
+
+    create table sessionrequest
+     (requestId int primary key auto_increment,
+     userId int not null,
+     mentorId int not null,
+     sessionDate date not null,
+     sessionTime time ,
+     sessionTopic varchar(20) not null,
+     sessionMessage varchar(50),
+     foreign key(userId) references users(userId),
+     foreign key(mentorId) references users(userId));

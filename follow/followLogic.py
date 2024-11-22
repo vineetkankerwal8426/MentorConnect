@@ -1,7 +1,7 @@
 import mysql.connector
-from flask import jsonify, render_template
+from flask import jsonify
 
-class registerLogic():
+class followLogic():
     def __init__(self):
         try:
             self.con = mysql.connector.connect(host="localhost",user = "root",password="12345",database = "mentorconnect")
@@ -9,13 +9,11 @@ class registerLogic():
         except:
             return jsonify({'status': 'fail', 'message': 'database connection failed'}), 401
         
-    def register(self,firstName,middleName,lastName,email,phone,userIdName,password):
-        query = "INSERT INTO USERS (FIRSTNAME,MIDDLENAME,LASTNAME,EMAIL,PHONE,USERIDNAME,PASSWORD) VALUES (%s,%s,%s,%s,%s,%s,%s)"
+    def followLogicFunction(self,userId,followerId):
+        query = "INSERT INTO follower (userId,followerId) VALUES (%s,%s)"
         try:
-            self.cur.execute(query, (firstName,middleName,lastName,email,phone,userIdName, password))
+            self.cur.execute(query, (userId,followerId))
             self.con.commit()
             return jsonify({'status': 'success'}), 200
-        except mysql.connector.errors.IntegrityError:
-            return "user name or email or phone already taken by someone else"
         except:
             return jsonify({'status': 'fail', 'message': 'failed while commiting query'}), 401
