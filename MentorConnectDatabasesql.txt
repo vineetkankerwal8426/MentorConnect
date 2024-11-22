@@ -36,7 +36,7 @@
     -> foreign key(mentorId) references users(userId));
 
 
-    create table sessionrequest
+    create table sessionrequests
      (requestId int primary key auto_increment,
      userId int not null,
      mentorId int not null,

@@ -19,7 +19,11 @@ class userProfileLogic():
             return "user Not Found"
         query2 = f"select USERBIO from userinformation natural join users where users.useridname = '{idname}'"
         self.cur.execute(query2)
-        user_info.update(self.cur.fetchone())
+        userbio = self.cur.fetchone()
+        if(userbio!= None):
+            user_info.update(userbio)
+        else:
+            user_info ['userbio'] = ""
 
         query3 = f"select sessiontopic, sessiondate,sessiontime,sessionlink from sessions join users where (sessions.userid = users.userid or sessions.mentorid = users.userid) and users.useridname = '{idname}'"
         self.cur.execute(query3)
