@@ -7,6 +7,7 @@ import registration.registrationController
 import login.loginController
 import follow.followController
 import userProfile.userProfileController
+import sessionRequest.sessionRequestController
 
 @app.route('/')
 def mentorconnect():

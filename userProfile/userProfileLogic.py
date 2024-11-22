@@ -47,14 +47,14 @@ class userProfileLogic():
         sessionUserInfo = session.get("userInfo")
         if(sessionUserInfo == None):  #user is not loggedIn
             user_info["sessionsRequests"] = False
-            user_info["sessionsRequest"] = False
-            user_info['followRequest'] =False
+            user_info["sessionRequestButton"] = False
+            user_info['followRequestButton'] =False
             return user_info
     
         elif(sessionUserInfo["userIdName"]!=idname): #user is loggedIn but want to see profile of any other user
             user_info["sessionsRequests"] = False
-            user_info["sessionsRequest"] = True
-            user_info['followRequest'] = True
+            user_info["sessionRequestButton"] = True
+            user_info['followRequestButton'] = True
             return user_info
         
         #user is loggedIn and want to see its own profile
@@ -84,6 +84,6 @@ class userProfileLogic():
             })
 
         user_info["sessionsRequests"] = sessionsReq
-        user_info["sessionsRequest"] = False
-        user_info['followRequest'] =False
+        user_info["sessionRequestButton"] = False
+        user_info['followRequestButton'] =False
         return user_info
